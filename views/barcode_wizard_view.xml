@@ -1,0 +1,22 @@
+<odoo>
+    <record id="view_barcode_wizard_form" model="ir.ui.view">
+        <field name="name">barcode.wizard.form</field>
+        <field name="model">barcode.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Generate Barcodes">
+                <group>
+                    <field name="product_barcode_qty_ids">
+                        <tree editable="false">
+                            <field name="product_id" options="{'no_open': True}"/>
+                            <field name="barcode_qty"/>
+                        </tree>
+                    </field>
+                </group>
+                <footer>
+                    <button string="Generate PDF" type="object" name="action_generate_barcode_pdf" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,12 @@
+<odoo>
+    <data>
+        <report
+            id="barcode_report"
+            string="Product Barcodes"
+            model="product.template"
+            report_type="qweb-pdf"
+            file="product_label_with_barcode.barcode_report_template"
+            name="product_label_with_barcode.barcode_report_template"
+            menu="False" />
+    </data>
+</odoo>

@@ -1,0 +1,50 @@
+<odoo>
+    <template id="barcode_report_template">
+        <t t-call="web.html_container">
+            <style>
+                .page {
+                    width: 210mm;
+                    height: 297mm;
+                    padding: 0;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+                .barcode-container {
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: flex-start;
+                    margin-left: 0;
+                    margin-right: 0;
+                }
+                .barcode-item {
+                    display: inline-block;
+                    margin-right: 5px; 
+                    margin-bottom: 15px;
+                    margin-top: 10px;
+                    text-align: center;
+                    border: 1px solid #000;
+                    width: 255px; 
+                    height: 150px;
+                    box-sizing: border-box; 
+                }
+            </style>
+            <div class="page">
+                <div class="barcode-container">
+                    <t t-foreach="docs" t-as="product">
+                    <t t-set="product_id" t-value="product.id"/>
+                        <t t-set="quantity" t-value="product_quantities.get(str(product_id), 1)"/>
+                        <t t-if="product">
+                            <t t-foreach="range(quantity)" t-as="i">
+                                <div class="barcode-item">
+                                    <p t-esc="product.name" style="font-weight: bold;"/>
+                                    <span t-field="product.barcode" t-options="{'widget': 'barcode', 'width': 250, 'height': 60}" style="margin-bottom: 2px;" />
+                                    <p t-esc="product.barcode" style="margin-top: 2px;"/>
+                                </div>
+                            </t>
+                        </t>
+                    </t>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>
