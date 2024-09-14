@@ -7,7 +7,7 @@
     This module generates a barcode sequence in the format PR-YearMonthDay/Product_id 
     for each new product and stores it and You can generate product label also in PDF format by this and manage inventory through Scanner.
     """,
-    'author': 'Your Name',
+    'author': 'Aneesh Mishra',
     'depends': ['base', 'account', 'product', 'web'],  # Added 'product' as a dependency
     'data': [
         'views/product_template_barcode_views.xml',
@@ -16,6 +16,9 @@
         'report/barcode_report_action.xml',
         'security/ir.model.access.csv',
     ],
+    'images': ['static/description/icon.png', 'static/description/main_screenshot.png'],
     'installable': True,
-    'application': False, 
+    'application': False,
+    'price': 5.00,  # Added price in USD
+    'currency': 'USD',
 }
