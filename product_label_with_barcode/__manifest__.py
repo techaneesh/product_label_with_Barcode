@@ -8,7 +8,7 @@
     for each new product and stores it and You can generate product label also in PDF format by this and manage inventory through Scanner.
     """,
     'author': 'Aneesh Mishra',
-    'depends': ['base', 'account', 'product', 'web'],  # Added 'product' as a dependency
+    'depends': ['base', 'account', 'product', 'web'],
     'data': [
         'views/product_template_barcode_views.xml',
         'views/barcode_wizard_view.xml',
