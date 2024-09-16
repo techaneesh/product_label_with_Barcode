@@ -12,6 +12,7 @@
     'data': [
         'views/product_template_barcode_views.xml',
         'views/barcode_wizard_view.xml',
+        'views/product_qrcode_view.xml',
         'report/barcode_report_template.xml',
         'report/barcode_report_action.xml',
         'security/ir.model.access.csv',
