@@ -1,56 +1,3 @@
-<!-- <odoo>
-    <template id="barcode_report_template">
-        <t t-call="web.html_container">
-            <style>
-                .page {
-                    width: 210mm;
-                    height: 297mm;
-                    padding: 0;
-                    margin-left: auto;
-                    margin-right: auto;
-                }
-                .barcode-container {
-                    display: flex;
-                    flex-wrap: wrap;
-                    justify-content: flex-start;
-                    margin-left: 0;
-                    margin-right: 0;
-                }
-                .barcode-item {
-                    display: inline-block;
-                    margin-right: 5px; 
-                    margin-bottom: 15px;
-                    margin-top: 10px;
-                    text-align: center;
-                    border: 1px solid #000;
-                    width: 255px; 
-                    height: 150px;
-                    box-sizing: border-box; 
-                }
-            </style>
-            <div class="page">
-                <div class="barcode-container">
-                    <t t-foreach="docs" t-as="product">
-                    <t t-set="product_id" t-value="product.id"/>
-                        <t t-set="quantity" t-value="product_quantities.get(str(product_id), 1)"/>
-                        <t t-if="product">
-                            <t t-foreach="range(quantity)" t-as="i">
-                                <div class="barcode-item">
-                                    <p t-esc="product.name" style="font-weight: bold;"/>
-                                    <img t-attf-src="data:image/png;base64,#{product.barcode_image}" 
-                                                         alt="Product Barcode" style="width: 95%; height: auto; max-height: 95%; object-fit: contain;" />
-                                    <span t-field="product.barcode" t-options="{'widget': 'barcode', 'width': 250, 'height': 60}" style="margin-bottom: 2px;" />
-                                    <p t-esc="product.barcode" style="margin-top: 2px;"/>
-                                </div>
-                            </t>
-                        </t>
-                    </t>
-                </div>
-            </div>
-        </t>
-    </template>
-</odoo> -->
-
 <odoo>
     <template id="barcode_report_template">
         <t t-call="web.html_container">
@@ -70,6 +17,21 @@
                                                 <div class="o_address_box o_address_from">
                                                     <strong t-esc="company.name" class="company-name" style="display: block; margin-bottom: 15px; text-align: center" />
                                                     <p>Product name: <t t-esc="product.name" class="product-name" style="display: block; margin-bottom: 2px; font-size: 16px;" /></p>
+                                                    <!-- Show product category if selected -->
+                                                    <t t-if="request.env['ir.config_parameter'].sudo().get_param('product_label_with_barcode.show_product_category')">
+                                                        <p>Product Category: <t t-esc="product.categ_id.name"/></p>
+                                                    </t>
+
+                                                    <!-- Show price if selected -->
+                                                    <t t-if="request.env['ir.config_parameter'].sudo().get_param('product_label_with_barcode.show_price')">
+                                                        <p>Price: <t t-esc="product.list_price"/> USD</p>
+                                                    </t>
+                                                    <!-- Show contact details if selected -->
+                                                    <t t-if="request.env['ir.config_parameter'].sudo().get_param('product_label_with_barcode.show_contact_details')">
+                                                        <div class="contact-details" style="font-size: 12px; margin-bottom: 2px;">
+                                                            Contact: <t t-esc="company.phone" /> | Email: <t t-esc="company.email" />
+                                                        </div>
+                                                    </t>
                                                     <!-- <p>Product Type: <t t-esc="product.categ_id"/></p> -->
                                                     <!-- <div class="contact-details" style="font-size: 12px; margin-bottom: 2px;">
                                                         Contact: <t t-esc="company.phone" /> | Email: <t t-esc="company.email" />
@@ -80,7 +42,7 @@
                                             <td style="padding: 0; width: 40%; ">
                                                 <div class="o_barcode_box" style="text-align: left;">
                                                     <img t-attf-src="data:image/png;base64,#{product.barcode_image}" 
-                                                         alt="Product Barcode" style="-webkit-transform: rotate(-90deg); width: 95%; height: auto; max-height: 95%; object-fit: contain;" />
+                                                         alt="Product Barcode" style="-webkit-transform: rotate(-90deg); width: 95%; height: auto; max-height: 100%; object-fit: contain;" />
                                                 </div>
                                             </td>
                                         </tr>
