@@ -10,21 +10,29 @@
                 <div class="app_settings_block" data-key="product_settings" string="Product Label Settings">
                     <h2>Product Label Options</h2>
                     <div class="row mt16 o_settings_container">
+                    <style>
+                            .custom-label-class {
+                                margin-right: 10px;  /* Adjust this value as needed */
+                            }
+                            .o_setting_box label {
+                                margin-right: 10px;  /* Adjust this value */
+                            }
+                        </style>
                         <div class="col-12 col-lg-6">
                             <div class="o_setting_box" data-key="show_contact_details">
-                                <label for="show_contact_details" string="Show Contact Details"/>
+                                <label for="show_contact_details" string="Show Contact Details" t-attf-class="custom-label-class"/>
                                 <field name="show_contact_details"/>
                             </div>
                         </div>
                         <div class="col-12 col-lg-6">
                             <div class="o_setting_box" data-key="show_product_category">
-                                <label for="show_product_category" string="Show Product Category"/>
+                                <label for="show_product_category" string="Show Product Category" t-attf-class="custom-label-class"/>
                                 <field name="show_product_category"/>
                             </div>
                         </div>
                         <div class="col-12 col-lg-6">
                             <div class="o_setting_box" data-key="show_price">
-                                <label for="show_price" string="Show Price"/>
+                                <label for="show_price" string="Show Price" t-attf-class="custom-label-class"/>
                                 <field name="show_price"/>
                             </div>
                         </div>
